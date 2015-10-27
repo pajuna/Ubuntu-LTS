@@ -9,7 +9,10 @@
     <th>Copyright</th><td>Copyright (c) 2015 by Mick Pollard</td>
   </tr>
   <tr>
-    <th>License</th><td>Distributed under the MIT License, see [LICENSE](LICENSE)</td>
+    <th>License</th>
+    <td>
+      Distributed under the MIT License, see [LICENSE](LICENSE)
+    </td>
   </tr>
   <tr>
     <th>twitter </th><td>@aussielunix</td>
