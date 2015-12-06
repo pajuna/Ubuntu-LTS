@@ -1,0 +1,12 @@
+---
+- name: add aws-cli via pip
+  sudo: yes
+  pip: name=awscli
+
+- name: symlink ~/.dotfiles/.aws into $HOME
+  file:
+    src={{ dotfiles_dir }}/.aws
+    dest="{{ lookup('env','HOME') }}/.aws"
+    state=link
+    force=yes
+  tags: awscli
