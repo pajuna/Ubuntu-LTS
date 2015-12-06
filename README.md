@@ -1,5 +1,13 @@
 # Ubuntu-LTS
 
+A collection of opinionated Ansible roles to be used for managing Ubuntu LTS (Trusty) Workstations.
+
+These are intended to be used with [Pajuna](https://github.com/pajuna/mystation) but are really just normal Ansible roles.
+
+## Requirement
+
+A lot of these roles rely on you to have an `$HOME/.dotfiles` directory with all your existing dotfiles.  
+
 
 <table>
   <tr>
