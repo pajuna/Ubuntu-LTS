@@ -1,0 +1,7 @@
+---
+
+- name: setup locale
+  locale_gen: name={{ locale }} state=present
+
+- name: dpkg-reconfigure locale
+  command: dpkg-reconfigure locales
