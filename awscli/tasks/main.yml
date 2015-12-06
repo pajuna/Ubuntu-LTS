@@ -1,4 +1,12 @@
 ---
+
+- name: check if $dotfiles/.aws exists
+  stat: path="{{ dotfiles_dir }}/.aws"
+  register: awsdotfile
+
+- fail: msg="{{ dotfiles_dir }}/.aws does not exist. Cannot continue with this role."
+  when: not awsdotfile.stat.isreg
+
 - name: add aws-cli via pip
   sudo: yes
   pip: name=awscli
