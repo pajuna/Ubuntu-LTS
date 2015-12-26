@@ -1,0 +1,14 @@
+---
+
+- name: download x86_64 linux .deb
+  get_url:
+    url={{ cf_cli.deb.url }}
+    sha256sum={{ cf_cli.deb.sha256 }}
+    dest={{ cf_cli.deb.dest }}
+  tags: cf_cli
+
+- name: install x86_64 linux .deb
+  apt: deb={{ cf_cli.deb.dest }}
+  sudo: yes
+  tags: cf_cli
+
