@@ -5,7 +5,7 @@
   register: awsdotfile
 
 - fail: msg="{{ dotfiles_dir }}/.aws does not exist. Cannot continue with this role."
-  when: not awsdotfile.stat.isreg
+  when: not awsdotfile.stat.isdir
 
 - name: add aws-cli via pip
   sudo: yes
