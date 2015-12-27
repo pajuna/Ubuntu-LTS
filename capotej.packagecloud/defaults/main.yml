@@ -1,6 +1,0 @@
----
-
-packagecloud:
-  repository: 'aussielunix/tools'
-  os: 'ubuntu'
-  version: 'trusty'
