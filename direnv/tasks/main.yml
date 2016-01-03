@@ -1,0 +1,6 @@
+---
+
+- name: install direnv from package
+  sudo: yes
+  apt: pkg=direnv state=present
+  tags: direnv
