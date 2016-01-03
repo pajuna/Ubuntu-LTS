@@ -1,0 +1,14 @@
+---
+- name: install git
+  apt: pkg=git state=installed
+  sudo: yes
+  tags: git
+
+- name: setup ~/.gitconfig
+  sudo: no
+  file:
+    src=~/.dotfiles/.gitconfig
+    dest=~/.gitconfig
+    state=link
+    force=yes
+  tags: git
