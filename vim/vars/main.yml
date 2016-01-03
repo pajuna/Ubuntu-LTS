@@ -1,0 +1,4 @@
+---
+
+vimrc_dir: "{{lookup('env','HOME')}}/.vim"
+vimrc_dest: "{{lookup('env','HOME')}}/.vimrc"

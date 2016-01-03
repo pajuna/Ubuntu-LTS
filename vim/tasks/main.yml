@@ -1,0 +1,18 @@
+---
+
+- name: vim | install vim
+  sudo: yes
+  apt: name=vim state=present
+
+- name: vim config | git clone/pull vim-config
+  git: >
+    repo={{ vimrc_repo }}
+    dest={{ vimrc_dir }}
+    accept_hostkey=yes
+  tags: vim
+
+- name: vim config | link ~/.vimrc into place
+  file:
+    src={{ vimrc_dir }}/.vimrc
+    dest={{ vimrc_dest }} state=link
+  tags: vim
