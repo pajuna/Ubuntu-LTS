@@ -1,0 +1,17 @@
+---
+- name: git clone/pull dotfiles
+  git: >
+    repo={{dotfiles_repo}}
+    dest={{dotfiles_dir}}
+    accept_hostkey=yes
+  tags: dotfiles
+
+- name: link various generic dotfiles into place
+  file:
+    src="{{dotfiles_dir}}/{{item}}"
+    dest="{{lookup('env','HOME')}}/{{item}}"
+    state=link
+    force=yes
+
+  with_items: dotfiles_files
+  tags: dotfiles
