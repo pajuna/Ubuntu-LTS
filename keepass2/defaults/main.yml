@@ -1,0 +1,5 @@
+---
+
+keepass:
+  src: "~/.dotfiles/.config/KeePass"
+  dest: "~/.config/KeePass"
