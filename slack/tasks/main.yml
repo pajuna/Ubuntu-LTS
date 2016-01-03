@@ -1,0 +1,16 @@
+---
+
+- name: install x86_64 linux support .deb
+  sudo: yes
+  apt: pkg=slack-desktop state=installed
+  tags: slack
+
+- name: symlink config file into home
+  sudo: no
+  file:
+    src={{ slack.dir.src }}
+    dest={{ slack.dir.dest }}
+    state=link
+    force=yes
+  tags: slack
+
