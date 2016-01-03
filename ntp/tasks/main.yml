@@ -1,0 +1,21 @@
+---
+- name: NTP | Install
+  apt: name=ntpdate state=present
+  sudo: yes
+  tags: ntp
+
+- name: NTP | ensure ntpd is NOT running
+  sudo: yes
+  service: name=ntp pattern=/usr/sbin/ntpd enabled=no state=stopped
+  ignore_errors: True
+  tags: ntp
+
+- name: NTP | setup ntpdate hourly cron
+  sudo: yes
+  cron: >
+    name="sync time hourly with ntpdate"
+    special_time=hourly
+    job="ntpdate {{ ntpd.server }}"
+    cron_file="ntpdate"
+    user="root"
+  tags: ntp
