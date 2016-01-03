@@ -1,0 +1,6 @@
+---
+
+direnv:
+  rc:
+    src: "{{dotfiles_dir}}/.direnvrc"
+    dest: "{{lookup('env', 'HOME')}}/.direnvrc"

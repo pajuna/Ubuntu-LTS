@@ -4,3 +4,13 @@
   sudo: yes
   apt: pkg=direnv state=present
   tags: direnv
+
+- name: symlink config file into home
+  sudo: no
+  file:
+    src={{ direnv.rc.src }}
+    dest={{ direnv.rc.dest }}
+    state=link
+    force=yes
+  tags: direnv
+
