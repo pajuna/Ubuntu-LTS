@@ -8,7 +8,7 @@
 - name: add ppa key
   sudo: yes
   apt_key: >
-    url='https://dl-ssl.google.com/linux/linux_signing_key.pub'
+    url='https://dl.google.com/linux/linux_signing_key.pub'
     state=present
 
 - name: install google-chrome
