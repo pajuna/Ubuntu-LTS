@@ -1,0 +1,22 @@
+---
+
+- name: install apt key
+  become: true
+  apt_key: >
+    url=https://www.virtualbox.org/download/oracle_vbox_2016.asc
+
+- name: setup custom apt repo
+  become: true
+  apt_repository: >
+    repo='deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+    state=present
+
+- name: update vbox list
+  become: true
+  apt: update_cache=yes
+
+- name: install vbox
+  become: true
+  apt:
+    pkg: "{{virtualbox_packagename}}"
+    state: installed
