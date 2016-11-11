@@ -1,0 +1,16 @@
+---
+
+# Setup/install tasks.
+- include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- name: install pip modules
+  sudo: true
+  pip: name={{ item }} state=present
+  with_items:
+    - "{{ python_pip_modules }}"
+  when: python_pip_modules is defined
+

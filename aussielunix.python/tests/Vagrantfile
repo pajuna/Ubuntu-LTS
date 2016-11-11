@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--memory", 1024]
+    v.customize ["modifyvm", :id, "--cpus", 1]
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
+  end #virtualbox provider
+
+  config.vm.define "trusty" do |vm_config|
+    vm_config.vm.box          = "ubuntu/trusty64"
+    vm_config.vm.host_name    = "trusty"
+    vm_config.vm.network :private_network, ip: "172.17.17.250"
+    vm_config.ssh.insert_key  = false
+  end # trusty config
+
+  # to speed up subsequent rebuilds install vagrant-cachier
+  # to cache packages in your ~/.vagrant.d/cache directory
+  # https://github.com/fgrehm/vagrant-cachier
+  #   `vagrant plugin install vagrant-cachier`
+  unless ENV['DISABLE_VAGRANT_CACHE']
+    if Vagrant.has_plugin?("vagrant-cachier")
+      # Configure cached packages to be shared between instances of the same base box.
+      # More info on http://fgrehm.viewdocs.io/vagrant-cachier/usage
+      config.cache.scope = :box
+    else
+      puts "to speed up subsequent rebuilds install vagrant-cachier"
+    end
+  end #vagrant-cachier
+end #vagrant config

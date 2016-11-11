@@ -1,0 +1,12 @@
+---
+
+# vars file for python
+main_packages:
+  - python
+  - python-pip
+  - python-setuptools
+  - python-crypto
+  - python-paramiko
+  - python-httplib2
+  - python-jinja2
+  - python-keyczar

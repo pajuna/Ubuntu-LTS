@@ -1,0 +1,17 @@
+general:
+  build_dir: tests
+
+dependencies:
+  pre:
+    - sudo pip install PyYAML jinja2 httplib2
+    - sudo pip install ansible
+
+machine:
+  environment:
+    ANSIBLE_REMOTE_USER: root
+
+test:
+  override:
+    - ansible-playbook -e'test_host=localhost' --connection=local test.yml --syntax-check
+    - ansible-playbook -e'test_host=localhost' --connection=local test.yml
+    - "ansible-playbook -e'test_host=localhost' --connection=local test.yml | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)"

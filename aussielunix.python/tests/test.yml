@@ -1,0 +1,5 @@
+---
+
+- hosts: "{{ test_host }}"
+  roles:
+    - aussielunix.python

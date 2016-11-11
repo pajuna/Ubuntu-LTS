@@ -1,0 +1,8 @@
+---
+# defaults file for python
+
+# declare variable for set install custom modules via package manager
+python_package_modules: []
+
+# declare variable for set install pip modules
+python_pip_modules: []

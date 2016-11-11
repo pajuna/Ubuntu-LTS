@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Mick Pollard <twitter.com/aussielunix>
+  description: Install python and python tools
+  company: Lunix Solutions
+  license: BSD
+  min_ansible_version: 1.8
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  - name: EL
+    versions:
+    - all
+  categories:
+  - system
+dependencies: []
