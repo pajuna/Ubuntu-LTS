@@ -1,0 +1,5 @@
+---
+rbenv_user: "{{ user }}"
+rbenv_root: "{{ lookup('env','HOME') }}/.rbenv"
+rbenv_ruby_versions: []
+rbenv_default_ruby_version: "system"

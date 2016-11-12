@@ -1,0 +1,7 @@
+---
+
+- name: install Vagrant from package
+  sudo: yes
+  apt: pkg=vagrant state=present
+  tags: vagrant
+

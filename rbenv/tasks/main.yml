@@ -1,0 +1,101 @@
+---
+- name: Create rbenv directory
+  file: >
+    path={{ rbenv_root }}
+    owner={{ rbenv_user }}
+    group={{ rbenv_user }}
+    mode=0755
+    state=directory
+
+- name: Install rbenv
+  git: >
+    repo=git://github.com/sstephenson/rbenv.git
+    dest={{ rbenv_root }}
+    accept_hostkey=True
+
+- name: Create shims directory
+  file: >
+    path={{ rbenv_root }}/shims
+    owner={{ rbenv_user }}
+    group={{ rbenv_user }}
+    mode=0755
+    state=directory
+
+- name: Create versions directory
+  file: >
+    path={{ rbenv_root }}/versions
+    owner={{ rbenv_user }}
+    group={{ rbenv_user }}
+    mode=0755
+    state=directory
+
+- name: Create plugins directory
+  file: >
+    path={{ rbenv_root }}/plugins
+    owner={{ rbenv_user }}
+    group={{ rbenv_user }}
+    mode=0755
+    state=directory
+
+- name: Install ~/.profile.d/rbenv.sh
+  template: >
+    src=rbenv.sh.j2
+    dest="{{  lookup('env','HOME') }}/.profile.d/rbenv.sh"
+    mode=644
+    owner={{ user }}
+    group={{ user }}
+
+- name: Install dependencies for ruby-build
+  sudo: yes
+  apt: pkg={{ item }}
+  with_items:
+    - autoconf
+    - bison
+    - build-essential
+    - libssl-dev
+    - libyaml-dev
+    - libreadline6
+    - libreadline6-dev
+    - zlib1g
+    - zlib1g-dev
+
+- name: Install ruby-build as rbenv plugin
+  git: >
+    repo=https://github.com/sstephenson/ruby-build.git
+    dest={{ rbenv_root }}/plugins/ruby-build
+    accept_hostkey=True
+
+- name: rbenv + ruby | Check installed ruby versions
+  shell: RBENV_ROOT={{ rbenv_root }} {{ rbenv_root }}/bin/rbenv versions --bare
+  register: rbenv_installed_ruby_versions
+  changed_when: False
+
+- name: rbenv + ruby | Install ruby versions
+  shell: RBENV_ROOT={{ rbenv_root }} {{ rbenv_root }}/bin/rbenv install {{ item }}
+  with_items: rbenv_ruby_versions
+  when: rbenv_installed_ruby_versions.stdout.find("{{ item }}") == -1
+
+- name: rbenv + ruby | Check default ruby version
+  shell: RBENV_ROOT={{ rbenv_root }} {{ rbenv_root }}/bin/rbenv global
+  register: rbenv_installed_default_ruby_version
+  changed_when: False
+
+- name: rbenv + ruby | Set default ruby version
+  shell: RBENV_ROOT={{ rbenv_root }} {{ rbenv_root }}/bin/rbenv global {{ rbenv_default_ruby_version }}
+  when: rbenv_installed_default_ruby_version.stdout.find("{{ rbenv_default_ruby_version }}") == -1
+
+- name: rbenv + ruby | Check installed bundler gem for ruby versions
+  shell: "source {{ lookup('env','HOME') }}/.profile.d/rbenv.sh && rbenv whence bundle"
+  args:
+    executable: /bin/bash
+  register: rbenv_installed_bundler_versions
+  changed_when: False
+  ignore_errors: True
+
+- name: rbenv + ruby | Install bundler gem for all rbenv ruby versions
+  shell: "source {{ lookup('env','HOME') }}/.profile.d/rbenv.sh && cd /tmp/ && rbenv local {{ item }} && gem install bundler --no-ri --no-rdoc"
+  args:
+    executable: /bin/bash
+  with_items: rbenv_ruby_versions
+  when: rbenv_installed_bundler_versions.stdout.find("{{ item }}") == -1
+

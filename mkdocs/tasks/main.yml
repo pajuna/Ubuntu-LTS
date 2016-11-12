@@ -1,0 +1,5 @@
+---
+
+- name: add mkdocs via pip
+  sudo: yes
+  pip: name=mkdocs

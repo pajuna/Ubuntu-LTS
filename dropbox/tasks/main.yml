@@ -1,0 +1,39 @@
+---
+- name: install python deps
+  apt: name=python-gpgme state=present
+  sudo: yes
+  tags: dropbox
+
+- name: download x86_64 linux support .deb
+  get_url:
+    url={{ dropbox.deb.url }}
+    sha256sum={{ dropbox.deb.sha256 }}
+    dest={{ dropbox.deb.dest }}
+    validate_certs=false
+  tags: dropbox
+
+- name: download x86_64 linux daemon .tar
+  get_url:
+    url={{ dropbox.tar.url }}
+    sha256sum={{ dropbox.tar.sha256 }}
+    dest={{ dropbox.tar.dest }}
+  tags: dropbox
+
+- name: install x86_64 linux support .deb
+  apt: deb={{ dropbox.deb.dest }}
+  sudo: yes
+  tags: dropbox
+
+- name: install x86_64 linux daemon from .tar
+  unarchive: src={{ dropbox.tar.dest }} dest="/home/lunix/"
+
+- name: Check dropboxd status
+  command: "dropbox status"
+  register: status
+  tags: dropbox
+
+- name: Start dropboxd if not already running
+  shell: "dropbox start >/dev/null 2>&1"
+  when: status.stdout == "Dropbox isn't running!"
+  tags: dropbox
+
