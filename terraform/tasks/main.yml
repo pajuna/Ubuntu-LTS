@@ -1,0 +1,16 @@
+---
+
+- name: Download Terraform
+  become: no
+  get_url:
+    url: "{{terraform.url}}"
+    dest: "{{terraform.tmp_dest}}"
+    checksum: "{{terraform.checksum}}"
+  tags: terraform
+
+- name: install Terraform to $HOME/bin
+  unarchive:
+    src: "{{terraform.tmp_dest}}"
+    dest: "{{terraform.install_dest}}"
+  tags: terraform
+
