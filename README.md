@@ -1,6 +1,8 @@
-# Ubuntu-Trusty
+# Ubuntu-LTS
 
-A collection of opinionated Ansible roles to be used for managing Ubuntu Trusty Workstations.
+A collection of opinionated Ansible roles to be used for managing Ubuntu LTS Workstations.
+
+The current Ubuntu LTS that these are tracking is `Ubuntu 16.04 Xenial Xerus`
 
 These are intended to be used with [Pajuna](https://github.com/pajuna/mystation) but are really just normal Ansible roles.
 
@@ -13,7 +15,7 @@ A lot of these roles rely on you to have an `$HOME/.dotfiles` directory with all
     <th>Author</th><td>Mick Pollard (aussielunix at g mail dot com)</td>
   </tr>
   <tr>
-    <th>Copyright</th><td>Copyright (c) 2015 by Mick Pollard</td>
+    <th>Copyright</th><td>Copyright (c) 2016 by Mick Pollard</td>
   </tr>
   <tr>
     <th>License</th><td>Distributed under the MIT License, see [LICENSE]</td>
