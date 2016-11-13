@@ -5,5 +5,5 @@
   apt:
     name: "{{ item }}"
     state: installed
-  with_items: misc_packages
+  with_items: "{{misc_packages}}"
   tags: misc
