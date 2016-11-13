@@ -13,6 +13,7 @@ A lot of these roles rely on you to have an `$HOME/.dotfiles` directory with all
 Some of these roles require that you have my [Packagecloud tools repo](https://packagecloud.io/aussielunix/tools) installed.  
 All packages in my tools repo are built/published with [Ansible](https://github.com/aussielunix/packagecloud-recipes).
 
+
 <table>
   <tr>
     <th>Author</th><td>Mick Pollard (aussielunix at g mail dot com)</td>
@@ -21,11 +22,9 @@ All packages in my tools repo are built/published with [Ansible](https://github.
     <th>Copyright</th><td>Copyright (c) 2016 by Mick Pollard</td>
   </tr>
   <tr>
-    <th>License</th><td>Distributed under the MIT License, see [LICENSE]</td>
+    <th>License</th><td>Distributed under the MIT License, see <a href="https://github.com/pajuna/Ubuntu-LTS/blob/master/LICENSE">LICENSE</a></td>
   </tr>
   <tr>
     <th>twitter </th><td>@aussielunix</td>
   </tr>
 </table>
-
-
