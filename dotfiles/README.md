@@ -7,7 +7,7 @@ The following variables are available to be set.
 
 
 ```
-dotfiles_repo: git@bitbucket.org:example/dotfiles.git
+dotfiles_repo: "https://github.com/pajuna/dotfiles.git"
 dotfiles_dir: "{{ lookup('env','HOME') }}/.dotfiles"
 dotfiles_files:
   - .bashrc
