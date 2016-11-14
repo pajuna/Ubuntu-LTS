@@ -8,5 +8,5 @@ Manage your vim config.
 The following variable will need to be set.
 
 ```
-vimrc_repo: "git@bitbucket.org:example/vimrc.git"
+vimrc_repo: "https://github.com/pajuna/vimrc.git"
 ```
