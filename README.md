@@ -6,6 +6,19 @@ The current Ubuntu LTS that these are tracking is `Ubuntu 16.04 Xenial Xerus`
 
 These are intended to be used with [Pajuna](https://github.com/pajuna/mystation) but are really just normal Ansible roles.
 
+## What is Pajuna
+
+A collection of Ansible based repos for lowering the time it takes to be productive again when you are starting with a new Ubuntu LTS Workstation.
+This includes remastering the Ubuntu installer iso through to installing and managing development tools, dotfiles and more.
+
+The goals of Pajuna are:
+
+* lower the time it takes to be productive again when you are starting with a new workstation
+* to be of minimal hindrance to keep it up to date
+* not rely on any bespoke software that is at risk of becoming abandonware
+* Waiting for your contribution upstream shouldn't slow you down
+
+
 ## Requirement
 
 A lot of these roles rely on you to have an `$HOME/.dotfiles` directory with all your existing dotfiles and will symlink the dotfiles into your $HOME. This means you can manage `~/.dotfiles` in a separate git repository.
