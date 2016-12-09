@@ -16,3 +16,7 @@
     src={{ vimrc_dir }}/.vimrc
     dest={{ vimrc_dest }} state=link
   tags: vim
+
+- name: install vim plugins
+  command: vim +PlugInstall +qall
+  tags: vim
