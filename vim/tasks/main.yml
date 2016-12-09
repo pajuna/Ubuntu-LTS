@@ -18,5 +18,5 @@
   tags: vim
 
 - name: install vim plugins
-  command: vim +PlugInstall +qall
+  command: vim +PlugUpdate +qall
   tags: vim
