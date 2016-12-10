@@ -14,7 +14,9 @@
 - name: vim config | link ~/.vimrc into place
   file:
     src={{ vimrc_dir }}/.vimrc
-    dest={{ vimrc_dest }} state=link
+    dest={{ vimrc_dest }}
+    state=link
+    force=yes
   tags: vim
 
 - name: install vim plugins
