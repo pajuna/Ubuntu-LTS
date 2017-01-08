@@ -32,7 +32,7 @@ All packages in my tools repo are built/published with [Ansible](https://github.
     <th>Author</th><td>Mick Pollard (aussielunix at g mail dot com)</td>
   </tr>
   <tr>
-    <th>Copyright</th><td>Copyright (c) 2016 by Mick Pollard</td>
+    <th>Copyright</th><td>Copyright (c) 2017 by Mick Pollard</td>
   </tr>
   <tr>
     <th>License</th><td>Distributed under the MIT License, see <a href="https://github.com/pajuna/Ubuntu-LTS/blob/master/LICENSE">LICENSE</a></td>
