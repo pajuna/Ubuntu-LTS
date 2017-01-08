@@ -22,7 +22,7 @@ The goals of Pajuna are:
 ## Requirement
 
 A lot of these roles rely on you to have an `$HOME/.dotfiles` directory with all your existing dotfiles and will symlink the dotfiles into your $HOME. This means you can manage `~/.dotfiles` in a separate git repository.  
-See [pajuna/vimrc](https://github.com/pajuna/vimrc) for an example to get you started.
+See [pajuna/dotfiles](https://github.com/pajuna/dotfiles) for an example to get you started.
 
 Some of these roles require that you have my [Packagecloud tools repo](https://packagecloud.io/aussielunix/tools) installed.  
 All packages in my tools repo are built/published with [Ansible](https://github.com/aussielunix/packagecloud-recipes).
