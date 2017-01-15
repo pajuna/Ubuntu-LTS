@@ -1,11 +1,13 @@
 ---
 
 # Setup/install tasks.
-- include: redhat.yml
-  when: ansible_os_family == 'RedHat'
+#
+# removed see https://github.com/pajuna/Ubuntu-LTS/issues/7
+#- include: redhat.yml
+#  when: ansible_os_family == 'RedHat'
 
 - include: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+#  when: ansible_distribution == 'Ubuntu'
 
 - name: install pip modules
   sudo: true
