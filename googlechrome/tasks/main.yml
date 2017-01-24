@@ -11,8 +11,11 @@
     url='https://dl.google.com/linux/linux_signing_key.pub'
     state=present
 
+- name: Update APT package cache
+  sudo: true
+  apt: update_cache=true
+
 - name: install google-chrome
   sudo: yes
-  apt: >
-    name=google-chrome-stable
-    update_cache=yes
+  apt:
+    name: google-chrome-stable
