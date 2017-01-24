@@ -72,7 +72,7 @@
 
 - name: rbenv + ruby | Install ruby versions
   shell: RBENV_ROOT={{ rbenv_root }} {{ rbenv_root }}/bin/rbenv install {{ item }}
-  with_items: rbenv_ruby_versions
+  with_items: "{{rbenv_ruby_versions}}"
   when: rbenv_installed_ruby_versions.stdout.find("{{ item }}") == -1
 
 - name: rbenv + ruby | Check default ruby version
@@ -96,6 +96,6 @@
   shell: "source {{ lookup('env','HOME') }}/.profile.d/rbenv.sh && cd /tmp/ && rbenv local {{ item }} && gem install bundler --no-ri --no-rdoc"
   args:
     executable: /bin/bash
-  with_items: rbenv_ruby_versions
+  with_items: "{{rbenv_ruby_versions}}"
   when: rbenv_installed_bundler_versions.stdout.find("{{ item }}") == -1
 
