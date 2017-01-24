@@ -7,5 +7,5 @@ dropbox:
     dest: "/tmp/dropbox_2015.10.28_amd64.deb"
   tar:
     url: "https://www.dropbox.com/download?plat=lnx.x86_64"
-    sha256: "7cd638531bbc312f22daa0d4a3771f1a78ff827cc648cec5122d4cd31b42961a."
+    sha256: "b94c70183a4919198bdd7e9e887bc38986a5614dfc7248d9dc9463c3e20ba966."
     dest: "~/tmp/dropbox-lnx.x86_64-3.10.11.tar.gz"
