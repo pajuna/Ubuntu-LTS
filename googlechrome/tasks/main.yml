@@ -1,21 +1,21 @@
 ---
-- name: add ppa
-  sudo: yes
-  apt_repository: >
-    repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
-    state=present
-
 - name: add ppa key
   sudo: yes
-  apt_key: >
-    url='https://dl.google.com/linux/linux_signing_key.pub'
-    state=present
+  apt_key:
+    url: 'https://dl.google.com/linux/linux_signing_key.pub'
+    state: present
 
-- name: Update APT package cache
-  sudo: true
-  apt: update_cache=true
+- name: add ppa
+  sudo: yes
+  apt_repository:
+    repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+    state: present
+    update_cache: true
+
 
 - name: install google-chrome
   sudo: yes
   apt:
     name: google-chrome-stable
+
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
