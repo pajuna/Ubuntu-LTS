@@ -26,3 +26,12 @@
     regexp="^GRUB_CMDLINE_LINUX_DEFAULT"
     line='GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
   tags: lubuntu
+
+- name: symlink various config files in from .dotfiles/.config to .config
+  file:
+    src="{{dotfiles_dir}}/.config/{{item}}"
+    dest="{{lookup('env','HOME')}}/.config/{{item}}"
+    state=link
+    force=yes
+  with_items: "{{lubuntu_config_files}}"
+  tags: lubuntu
