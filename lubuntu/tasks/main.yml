@@ -3,18 +3,21 @@
 - name: enable Ubuntu Extras
   sudo: yes
   apt_repository: repo='deb http://mirror.internode.on.net/pub/ubuntu/ubuntu trusty restricted' state=present
+  tags: lubuntu
 
 - name: Install the Lubuntu Meta Package
   sudo: yes
-  apt: name="{{ item }}" install_recommends=true
+  apt: name="{{item}}" install_recommends=true
   with_items:
     - lubuntu-desktop
     - lubuntu-restricted-addons
     - lubuntu-restricted-extras
+  tags: lubuntu
 
 - name: install a sane pulseaudio tray tool
   sudo: yes
   apt: name="pavucontrol" install_recommends=true
+  tags: lubuntu
 
 - name: turn boot splash on
   sudo: yes
@@ -22,6 +25,7 @@
     dest=/etc/default/grub
     regexp="^GRUB_CMDLINE_LINUX_DEFAULT"
     line='GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
+  tags: lubuntu
 
 - name: create config directory
   sudo: no
@@ -29,3 +33,4 @@
     path="{{ lookup('env','HOME') }}/.config"
     state=directory
     mode=0755
+  tags: lubuntu
