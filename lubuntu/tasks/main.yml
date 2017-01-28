@@ -26,11 +26,3 @@
     regexp="^GRUB_CMDLINE_LINUX_DEFAULT"
     line='GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
   tags: lubuntu
-
-- name: create config directory
-  sudo: no
-  file: >
-    path="{{ lookup('env','HOME') }}/.config"
-    state=directory
-    mode=0755
-  tags: lubuntu
