@@ -1,0 +1,10 @@
+---
+
+- name: install libreoffice
+  become: true
+  apt:
+    pkg: "{{item}}"
+    state: installed
+  with_items:
+    - libreoffice
+    - libreoffice-templates
