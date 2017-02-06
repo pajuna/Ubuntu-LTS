@@ -3,7 +3,7 @@
 - name: enable Ubuntu Extras
   sudo: yes
   apt_repository:
-    repo: 'deb http://mirror.internode.on.net/pub/ubuntu/ubuntu trusty restricted'
+    repo: 'deb http://mirror.internode.on.net/pub/ubuntu/ubuntu xenial restricted'
     state: present
     update_cache: true
   tags: lubuntu
