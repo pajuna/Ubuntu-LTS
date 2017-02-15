@@ -1,0 +1,31 @@
+---
+galaxy_info:
+  author: David Karban
+  description: "Install and configure openconnect client to connect to Cisco anyconect VPN."
+  company: 
+  license: GPLv2
+  min_ansible_version: 1.2
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Ubuntu
+    versions:
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
+    - utopic
+    - vivid
+  - name: Debian
+    versions:
+    - jessie
+    - lenny
+    - squeeze
+    - wheezy
+  categories:
+    - system
+dependencies: []
+  
