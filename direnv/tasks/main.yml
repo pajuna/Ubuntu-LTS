@@ -12,5 +12,5 @@
     dest={{ direnv.rc.dest }}
     state=link
     force=yes
+  when: direnv.rc.src is defined
   tags: direnv
-
