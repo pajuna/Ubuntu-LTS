@@ -5,6 +5,10 @@
   apt: pkg=direnv state=present
   tags: direnv
 
+- stat: path="{{direnv.rc.src}}"
+  register: direnvrcsrc
+  tags: direnv
+
 - name: symlink config file into home
   sudo: no
   file:
@@ -12,5 +16,5 @@
     dest={{ direnv.rc.dest }}
     state=link
     force=yes
-  when: direnv.rc.src is defined
+  when: direnvrcsrc.stat.exists
   tags: direnv
