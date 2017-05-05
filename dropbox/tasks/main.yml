@@ -25,7 +25,7 @@
   tags: dropbox
 
 - name: install x86_64 linux daemon from .tar
-  unarchive: src={{ dropbox.tar.dest }} dest="/home/lunix/"
+  unarchive: src={{ dropbox.tar.dest }} dest="/home/{{user}}/"
 
 - name: Check dropboxd status
   command: "dropbox status"
