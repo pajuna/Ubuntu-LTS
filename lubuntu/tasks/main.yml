@@ -41,4 +41,5 @@
     state: link
     force: yes
   with_items: "{{lubuntu_config_files}}"
+  when: lubuntu_config_files is defined
   tags: lubuntu
