@@ -21,25 +21,25 @@
   apt_key: id=418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB url=https://packagecloud.io/gpg.key state=present
   when: ansible_os_family == "Debian"
 
-- name: "Adding packagecloud.io repository: {{ repository }}"
+- name: "Adding packagecloud.io repository {{ packagecloud.repository }}"
   become: true
-  shell: curl "{{ debian_config_file_url_without_token }}" > {{ debian_config_file_location }} creates={{ debian_config_file_location }}
+  shell: curl "{{debian_config_file_url_without_token}}" > "{{debian_config_file_location}}" creates="{{debian_config_file_location}}"
   register: added_deb_repository
   when: ansible_os_family == "Debian" and master_token is undefined
 
-- name: "Adding packagecloud.io repository: {{ repository }} with generated read token"
+- name: "Adding packagecloud.io repository: {{ packagecloud.repository }} with generated read token"
   become: true
   shell: curl "{{ debian_config_file_url_with_token }}" > {{ debian_config_file_location }} creates={{ debian_config_file_location }}
   register: added_deb_repository
   when: ansible_os_family == "Debian" and master_token is defined
 
-- name: "Adding packagecloud.io repository: {{ repository }}"
+- name: "Adding packagecloud.io repository: {{ packagecloud.repository }}"
   become: true
   shell: curl "{{ redhat_config_file_url_without_token }}" > {{ redhat_config_file_location }} creates={{ redhat_config_file_location }}
   register: added_rpm_repository
   when: ansible_os_family == "RedHat" and master_token is undefined
 
-- name: "Adding packagecloud.io repository: {{ repository }} with generated read token"
+- name: "Adding packagecloud.io repository: {{ packagecloud.repository }} with generated read token"
   become: true
   shell: curl "{{ redhat_config_file_url_with_token }}" > {{ redhat_config_file_location }} creates={{ redhat_config_file_location }}
   register: added_rpm_repository
@@ -52,5 +52,5 @@
 
 - name: Update yum package cache
   become: true
-  shell: yum -q makecache -y --disablerepo='*' --enablerepo='{{ repository|replace("/", "_")}}'
+  shell: yum -q makecache -y --disablerepo='*' --enablerepo='{{ packagecloud.repository|replace("/", "_")}}'
   when: ansible_os_family == "RedHat" and added_rpm_repository|success
