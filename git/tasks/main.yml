@@ -1,11 +1,11 @@
 ---
 - name: install git
   apt: pkg=git state=installed
-  sudo: yes
+  become: yes
   tags: git
 
 - name: setup ~/.gitconfig
-  sudo: no
+  become: no
   file:
     src=~/.dotfiles/.gitconfig
     dest=~/.gitconfig

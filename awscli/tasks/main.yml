@@ -8,7 +8,7 @@
   when: not awsdotfile.stat.isdir
 
 - name: add aws-cli via pip
-  sudo: yes
+  become: yes
   pip: name=awscli
 
 - name: symlink ~/.dotfiles/.aws into $HOME

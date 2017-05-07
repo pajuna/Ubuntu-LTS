@@ -1,8 +1,9 @@
 ---
 
 - name: vim | install vim
-  sudo: yes
+  become: yes
   apt: name=vim state=present
+  tags: vim
 
 - name: vim config | git clone/pull vim-config
   git: >

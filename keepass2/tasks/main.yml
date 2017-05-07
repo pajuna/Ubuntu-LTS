@@ -1,15 +1,15 @@
 ---
 
 - name: install KeePass2
-  apt: pkg="{{ item }}" state=installed
-  sudo: yes
+  apt: pkg="{{item}}" state=installed
+  become: yes
   tags: keepass2
   with_items:
     - keepass2
     - xdotool
 
 - name: setup ~/.config/KeePass
-  sudo: no
+  become: no
   file:
     src={{ keepass.src }}
     dest={{ keepass.dest }}

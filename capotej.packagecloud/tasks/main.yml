@@ -1,5 +1,5 @@
 - name: Install debian-archive-keyring and apt-transport-https
-  sudo: true
+  become: true
   apt: pkg={{ item }} state=present update_cache=true
   with_items:
     - curl
@@ -8,7 +8,7 @@
   when: ansible_os_family == "Debian"
 
 - name: Install pygpgme and yum-utils
-  sudo: true
+  become: true
   yum: name={{ item }} state=present update_cache=true
   with_items:
     - curl
@@ -17,40 +17,40 @@
   when: ansible_os_family == "RedHat"
 
 - name: Add packagecloud.io GPG key to apt-key
-  sudo: true
-  apt_key: id=D59097AB url=https://packagecloud.io/gpg.key state=present
+  become: true
+  apt_key: id=418A7F2FB0E1E6E7EABF6FE8C2E73424D59097AB url=https://packagecloud.io/gpg.key state=present
   when: ansible_os_family == "Debian"
 
-- name: "Adding packagecloud.io repository: {{ packagecloud.repository }}"
-  sudo: true
+- name: "Adding packagecloud.io repository: {{ repository }}"
+  become: true
   shell: curl "{{ debian_config_file_url_without_token }}" > {{ debian_config_file_location }} creates={{ debian_config_file_location }}
   register: added_deb_repository
   when: ansible_os_family == "Debian" and master_token is undefined
 
-- name: "Adding packagecloud.io repository: {{ packagecloud.repository }} with generated read token"
-  sudo: true
+- name: "Adding packagecloud.io repository: {{ repository }} with generated read token"
+  become: true
   shell: curl "{{ debian_config_file_url_with_token }}" > {{ debian_config_file_location }} creates={{ debian_config_file_location }}
   register: added_deb_repository
   when: ansible_os_family == "Debian" and master_token is defined
 
-- name: "Adding packagecloud.io repository: {{ packagecloud.repository }}"
-  sudo: true
-  shell: curl "{{ redhat_config_file_url_without_token }}" > / {{ redhat_config_file_location }} creates={{ redhat_config_file_location }}
+- name: "Adding packagecloud.io repository: {{ repository }}"
+  become: true
+  shell: curl "{{ redhat_config_file_url_without_token }}" > {{ redhat_config_file_location }} creates={{ redhat_config_file_location }}
   register: added_rpm_repository
   when: ansible_os_family == "RedHat" and master_token is undefined
 
-- name: "Adding packagecloud.io repository: {{ packagecloud.repository }} with generated read token"
-  sudo: true
+- name: "Adding packagecloud.io repository: {{ repository }} with generated read token"
+  become: true
   shell: curl "{{ redhat_config_file_url_with_token }}" > {{ redhat_config_file_location }} creates={{ redhat_config_file_location }}
   register: added_rpm_repository
   when: ansible_os_family == "RedHat" and master_token is defined
 
 - name: Update APT package cache
-  sudo: true
+  become: true
   apt: update_cache=true
   when: ansible_os_family == "Debian" and added_deb_repository|success
 
 - name: Update yum package cache
-  sudo: true
-  shell: yum -q makecache -y --disablerepo='*' --enablerepo='{{ packagecloud.repository|replace("/", "_")}}'
+  become: true
+  shell: yum -q makecache -y --disablerepo='*' --enablerepo='{{ repository|replace("/", "_")}}'
   when: ansible_os_family == "RedHat" and added_rpm_repository|success

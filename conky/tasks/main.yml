@@ -1,11 +1,11 @@
 ---
 - name: conky | install conky
-  sudo: yes
+  become: yes
   apt: pkg=conky-std state=installed
   tags: conky
 
 - name: conky | setup ~/.conky
-  sudo: no
+  become: no
   file:
     src={{ conky.dir.src }}
     dest={{ conky.dir.dest }}
@@ -14,7 +14,7 @@
   tags: conky
 
 - name: conky | setup ~/.conkyrc
-  sudo: no
+  become: no
   file:
     src={{ conky.rc.src }}
     dest={{ conky.rc.dest }}

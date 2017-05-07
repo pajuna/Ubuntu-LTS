@@ -1,7 +1,7 @@
 ---
 
 - name: install cf-cli linux .deb
-  sudo: yes
+  become: yes
   apt: name=cf-cli state=installed
   tags: cf_cli
 

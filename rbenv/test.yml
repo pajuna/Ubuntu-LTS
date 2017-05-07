@@ -1,7 +1,7 @@
 ---
 - hosts: all
   remote_user: vagrant
-  sudo: yes
+  become: yes
   vars:
     rbenv_ruby_versions:
       - 2.1.5

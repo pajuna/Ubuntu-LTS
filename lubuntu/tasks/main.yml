@@ -1,7 +1,7 @@
 ---
 
 - name: enable Ubuntu Extras
-  sudo: yes
+  become: yes
   apt_repository:
     repo: 'deb http://mirror.internode.on.net/pub/ubuntu/ubuntu xenial restricted'
     state: present
@@ -9,7 +9,7 @@
   tags: lubuntu
 
 - name: Install the Lubuntu Meta Package
-  sudo: yes
+  become: yes
   apt:
     name: "{{item}}"
     install_recommends: true
@@ -20,14 +20,14 @@
   tags: lubuntu
 
 - name: install a sane pulseaudio tray tool
-  sudo: yes
+  become: yes
   apt:
     name: "pavucontrol"
     install_recommends: true
   tags: lubuntu
 
 - name: turn boot splash on
-  sudo: yes
+  become: yes
   lineinfile:
     dest: /etc/default/grub
     regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"

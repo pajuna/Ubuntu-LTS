@@ -1,12 +1,12 @@
 ---
 
 - name: install terminator
-  sudo: yes
+  become: yes
   apt: pkg=terminator state=installed
   tags: terminator
 
 - name: symlink config file into home
-  sudo: no
+  become: no
   file:
     src={{ terminator.dir.src }}
     dest={{ terminator.dir.dest }}

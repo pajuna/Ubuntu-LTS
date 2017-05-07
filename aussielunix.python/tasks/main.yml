@@ -10,7 +10,7 @@
 #  when: ansible_distribution == 'Ubuntu'
 
 - name: install pip modules
-  sudo: true
+  become: true
   pip: name={{ item }} state=present
   with_items:
     - "{{ python_pip_modules }}"

@@ -46,7 +46,7 @@
     group={{ user }}
 
 - name: Install dependencies for ruby-build
-  sudo: yes
+  become: yes
   apt: pkg={{ item }}
   with_items:
     - autoconf

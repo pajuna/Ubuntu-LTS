@@ -1,7 +1,7 @@
 ---
 
 - name: install direnv from package
-  sudo: yes
+  become: yes
   apt: pkg=direnv state=present
   tags: direnv
 
@@ -10,7 +10,7 @@
   tags: direnv
 
 - name: symlink config file into home
-  sudo: no
+  become: no
   file:
     src={{ direnv.rc.src }}
     dest={{ direnv.rc.dest }}
