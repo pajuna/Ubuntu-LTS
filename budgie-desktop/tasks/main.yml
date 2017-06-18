@@ -4,10 +4,40 @@
   apt_repository:
     repo: 'ppa:budgie-remix/ppa'
     update_cache: true
+  tags: budgie
 
 - name: install budgie-desktop
   become: yes
   apt:
     name: budgie-desktop-environment
+  tags: budgie
 
-# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
+- name: turn boot splash on
+  become: yes
+  lineinfile:
+    dest: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"'
+  tags: budgie
+
+- name: symlink various config files in from .dotfiles/.config to .config
+  file:
+    src: "{{dotfiles_dir}}/budgie/.config/{{item}}"
+    dest: "{{lookup('env','HOME')}}/.config/{{item}}"
+    state: link
+    force: yes
+  with_items: "{{budgie_config_files}}"
+  when: budgie_config_files is defined
+  tags: budgie
+
+- name: symlink various config files in from .dotfiles
+  file:
+    src: "{{dotfiles_dir}}/budgie/{{item}}"
+    dest: "{{lookup('env','HOME')}}/{{item}}"
+    state: link
+    force: yes
+  with_items: "{{budgie_files}}"
+  when: budgie_files is defined
+  tags: budgie
+
+  # vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
