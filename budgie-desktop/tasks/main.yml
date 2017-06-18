@@ -1,0 +1,13 @@
+---
+- name: add budgie-remix ppa
+  become: yes
+  apt_repository:
+    repo: 'ppa:budgie-remix/ppa'
+    update_cache: true
+
+- name: install budgie-desktop
+  become: yes
+  apt:
+    name: budgie-desktop-environment
+
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
