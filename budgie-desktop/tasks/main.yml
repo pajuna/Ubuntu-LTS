@@ -9,8 +9,11 @@
 - name: install budgie-desktop
   become: yes
   apt:
-    name: budgie-desktop-environment
+    name: "{{item}}"
   tags: budgie
+  with_items:
+    - budgie-desktop-environment
+    - gnome-tweak-tool
 
 - name: turn boot splash on
   become: yes
