@@ -28,13 +28,19 @@
   unarchive: src={{ dropbox.tar.dest }} dest="/home/{{user}}/"
   tags: dropbox
 
+- name: set dropbox up to autostart at boot
+  copy:
+    src: dropbox.desktop
+    dest: "/home/{{user}}/.config/autostart/dropbox.desktop"
+    mode: 0644
+
 - name: Check dropboxd status
   command: "dropbox status"
   register: status
   tags: dropbox
 
 - name: Start dropboxd if not already running
-  shell: "dropbox start >/dev/null 2>&1"
+  shell: "dbus-launch dropbox start -i >/dev/null 2>&1"
   when: status.stdout == "Dropbox isn't running!"
   tags: dropbox
 
