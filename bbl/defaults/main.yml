@@ -1,0 +1,6 @@
+---
+
+bbl:
+  url: "https://github.com/cloudfoundry/bosh-bootloader/releases/download/v6.6.9/bbl-v6.6.9_linux_x86-64"
+  dest: "{{lookup('env','HOME')}}/bin/bbl"
+  checksum: "sha256:e707f63cd9fc74e3d0483b0ace8149b5c94a7e34f3069054f649afd1554be248"

@@ -1,0 +1,10 @@
+---
+
+- name: Download bosh-bootloader aka - bbl
+  become: no
+  get_url:
+    url: "{{bbl.url}}"
+    dest: "{{bbl.dest}}"
+    mode: "0755"
+    checksum: "{{bbl.checksum}}"
+  tags: bbl
