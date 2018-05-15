@@ -1,0 +1,26 @@
+---
+
+- name: install apt key
+  become: true
+  apt_key:
+    url: "https://updates.signal.org/desktop/apt/keys.asc"
+  tags: 'signal'
+
+- name: setup custom apt repo
+  become: true
+  apt_repository:
+    repo: 'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main'
+    state: present
+  tags: 'signal'
+
+- name: update apt cache
+  become: true
+  apt: update_cache=yes
+  tags: 'signal'
+
+- name: install signal-desktop
+  become: true
+  apt:
+    pkg: "signal-desktop"
+    state: present
+  tags: 'signal'
