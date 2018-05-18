@@ -1,0 +1,10 @@
+---
+
+- name: Download credalert
+  become: no
+  get_url:
+    url: "{{credalert.url}}"
+    dest: "{{credalert.dest}}"
+    mode: "0755"
+    checksum: "{{credalert.checksum}}"
+  tags: credalert
