@@ -6,6 +6,7 @@
     repo: ppa:git-core/ppa
     update_cache: true
     state: present
+  when: git.ppa
   tags: git
 
 - name: install git
