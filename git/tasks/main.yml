@@ -1,7 +1,18 @@
 ---
+
+- name: add the git-core ppa
+  become: true
+  apt_repository:
+    repo: ppa:git-core/ppa
+    update_cache: true
+    state: present
+  tags: git
+
 - name: install git
-  apt: pkg=git state=installed
   become: yes
+  apt:
+    pkg: git
+    state: present
   tags: git
 
 - name: setup ~/.gitconfig
