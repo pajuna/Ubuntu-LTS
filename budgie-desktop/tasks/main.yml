@@ -43,4 +43,4 @@
   when: budgie_files is defined
   tags: budgie
 
-  # vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2
