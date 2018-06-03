@@ -33,6 +33,7 @@
     src: dropbox.desktop
     dest: "/home/{{user}}/.config/autostart/dropbox.desktop"
     mode: 0644
+  tags: dropbox
 
 - name: Check dropboxd status
   command: "dropbox status"
