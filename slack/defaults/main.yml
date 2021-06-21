@@ -1,7 +1,0 @@
----
-
-slack:
-  dir:
-    src: "{{dotfiles_dir}}/.config/Slack"
-    dest: "{{lookup('env', 'HOME')}}/.config/Slack"
-

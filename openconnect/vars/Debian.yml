@@ -1,5 +1,0 @@
----
-openconnect_pkgs:
-  - openconnect
-  - network-manager-openconnect
-  - network-manager-openconnect-gnome

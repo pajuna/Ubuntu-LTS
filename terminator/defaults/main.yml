@@ -1,6 +1,0 @@
----
-
-terminator:
-  dir:
-    src: "{{ dotfiles_dir }}/.config/terminator"
-    dest: "{{ lookup('env', 'HOME') }}/.config/terminator"

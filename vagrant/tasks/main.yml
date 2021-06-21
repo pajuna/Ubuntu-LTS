@@ -1,9 +1,0 @@
----
-
-- name: install Vagrant from package
-  become: yes
-  apt:
-    pkg: vagrant
-    state: latest
-  tags: vagrant
-

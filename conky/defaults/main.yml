@@ -1,7 +1,0 @@
-conky:
-  dir:
-    src: "{{ dotfiles_dir }}/.conky"
-    dest: "{{ lookup('env','HOME') }}/.conky"
-  rc:
-    src: "{{ dotfiles_dir }}/.conkyrc"
-    dest: "{{ lookup('env','HOME') }}/.conkyrc"

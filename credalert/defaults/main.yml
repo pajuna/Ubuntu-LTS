@@ -1,6 +1,0 @@
----
-
-credalert:
-  url: "https://github.com/pivotal-cf/cred-alert/releases/download/2018-03-19-20-33-04/cred-alert-cli_linux"
-  dest: "{{lookup('env','HOME')}}/bin/cred-alert-cli"
-  checksum: "sha256:6fe9c9639de3bb2dc577fe3b07d0c876ed7a2f6c3bccf1a1aacc836bd8aea7b1."
