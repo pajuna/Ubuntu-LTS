@@ -2,8 +2,7 @@
 
 - name: misc | Install misc linux tools (mc, screen etc)
   become: yes
-  apt:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{misc_packages}}"
+  ansible.builtin.apt:
+    name: "{{ misc_packages }}"
+    state: present
   tags: misc
