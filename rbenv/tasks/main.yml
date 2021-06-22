@@ -47,17 +47,17 @@
 
 - name: Install dependencies for ruby-build
   become: yes
-  apt: pkg={{ item }}
-  with_items:
-    - autoconf
-    - bison
-    - build-essential
-    - libssl-dev
-    - libyaml-dev
-    - libreadline6
-    - libreadline6-dev
-    - zlib1g
-    - zlib1g-dev
+  ansible.builtin.apt:
+    pkg:
+      - autoconf
+      - bison
+      - build-essential
+      - libssl-dev
+      - libyaml-dev
+      - libreadline8
+      - libreadline-dev
+      - zlib1g
+      - zlib1g-dev
 
 - name: Install ruby-build as rbenv plugin
   git: >
