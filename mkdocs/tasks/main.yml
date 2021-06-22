@@ -1,5 +1,0 @@
----
-
-- name: add mkdocs via pip
-  become: yes
-  pip: name=mkdocs

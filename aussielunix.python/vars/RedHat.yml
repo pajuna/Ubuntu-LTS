@@ -1,6 +1,0 @@
----
-# vars file for python
-os_packages:
-  - python-devel
-  - PyYAML
-  - libselinux-python
